@@ -18,9 +18,7 @@
     <area class="ucarea" alt="" title="" target="_blank" href="https://youtu.be/JK00mLy7zpc" shape="poly" coords="743,142,742,155,726,174,725,217,736,237,724,266,713,298,732,302,730,324,724,348,730,390,774,390,784,317,793,316,796,258,771,244,782,221,790,183,780,160,761,142" />
 
     <area alt="" title="info", id="info", 
-    href='javascript:swal({
-  		title: "Welcome!",
-  		text: "When I was a kid, I loved to play adventure games.\n Day of the Tentacle, Monkey Island, Indiana Jones and more. I loved that they were  are all about unraveling stories, exploring worlds and solving puzzles. Even as an adult, I choose to live my life as an adventure game.\n Every clickable item in this room is part of my journey: something I\x27ve made, or a piece in the puzzle, that helped lead  me to my next adventure. Enjoy playing!\n"});' 
+    href='javascript:questInfo()' 
   	shape="poly" coords="470,561,515,583,524,627,498,641,468,647,439,636,429,598,438,576" />
 </map>
 
@@ -45,12 +43,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script  src= "jquery.rwdImageMaps.js"></script>
 <script>
+function questInfo(){
+  swal({
+      title: "Welcome!",
+      text: "When I was a kid, I loved to play adventure games.\n Day of the Tentacle, Monkey Island, Indiana Jones and more. I loved that they were  are all about unraveling stories, exploring worlds and solving puzzles. Even as an adult, I choose to live my life as an adventure game.\n Every clickable item in this room is part of my journey: something I\x27ve made, or a piece in the puzzle, that helped lead  me to my next adventure. Enjoy playing!\n"
+    });
+};
 $(document).ready(function(e) {
-	$('img[usemap]').rwdImageMaps();
-	swal({
-  		title: "Welcome!",
-  		text: "When I was a kid, I loved to play adventure games.\n Day of the Tentacle, Monkey Island, Indiana Jones and more. I loved that they were  are all about unraveling stories, exploring worlds and solving puzzles. Even as an adult, I choose to live my life as an adventure game.\n Every clickable item in this room is part of my journey: something I\x27ve made, or a piece in the puzzle, that helped lead  me to my next adventure. Enjoy playing!\n"
-  	});
+  $('img[usemap]').rwdImageMaps();
+  questInfo()
 });
 </script>
 
