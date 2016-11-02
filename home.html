@@ -2,28 +2,40 @@
 <html>
 
 <head>
+<title>Karin's Quest</title>
 <link rel="stylesheet" type="text/css" href="style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+<script src="dist/sweetalert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 </head>
 <body class="cursor_off">
 
-<img src="map.jpg" alt="" usemap="#Map" />
-<map name="Map" id="Map">
-    <area class="ucarea" alt="" title="" href="https://youtu.be/XbXJpxw7ok0" shape="poly" coords="620,18,617,138,706,143,709,31,666,15" />
-    <area class="ucarea" alt="" title="" href="https://youtu.be/xug3av-t1PY" shape="poly" coords="166,227,305,233,312,285,170,292" />
-    <area class="ucarea" alt="" title="" href="https://youtu.be/mK8Cx18GRPc " shape="poly" coords="298,68,324,91,318,118,283,114,271,95,281,76" />
-    <area class="ucarea" alt="" title="" href="https://youtu.be/ZjRuZqrux7E" shape="poly" coords="0,6,66,21,81,63,61,91,23,97,1,97" />
-    <area class="ucarea" alt="" title="" href="https://youtu.be/JK00mLy7zpc" shape="poly" coords="743,142,742,155,726,174,725,217,736,237,724,266,713,298,732,302,730,324,724,348,730,390,774,390,784,317,793,316,796,258,771,244,782,221,790,183,780,160,761,142" />
+<img src="map.jpg" alt="" usemap="#Map" class="MainImgMap">
+<map name="Map" id="Map" >
+    <area class="ucarea" alt="" title=""  target="_blank" href="https://youtu.be/XbXJpxw7ok0" shape="poly" coords="620,18,617,138,706,143,709,31,666,15" />
+    <area class="ucarea" alt="" title="" target="_blank" href="https://youtu.be/xug3av-t1PY" shape="poly" coords="166,227,305,233,312,285,170,292" />
+    <area class="ucarea" alt="" title="" target="_blank" href="https://youtu.be/mK8Cx18GRPc " shape="poly" coords="298,68,324,91,318,118,283,114,271,95,281,76" />
+    <area class="ucarea" alt="" title="" target="_blank" href="https://youtu.be/ZjRuZqrux7E" shape="poly" coords="0,6,66,21,81,63,61,91,23,97,1,97" />
+    <area class="ucarea" alt="" title="" target="_blank" href="https://youtu.be/JK00mLy7zpc" shape="poly" coords="743,142,742,155,726,174,725,217,736,237,724,266,713,298,732,302,730,324,724,348,730,390,774,390,784,317,793,316,796,258,771,244,782,221,790,183,780,160,761,142" />
+
     <area alt="" title="info", id="info", 
-    href='javascript:alert("When I was a kid, I always loved to play adventure games. Sam and Max, Monkey Island, Indiana Jones and more...\x22Adventure games\x22 are all about unraveling stories, exploring worlds and solving puzzles.\n
-As an adult, I choose to live my life as an adventure game.\n
-Every clickable item in this room is part of my journey, something I\x27ve made, a piece in the puzzle, that led me to my next adventure.. Enjoy playing.")' shape="poly" coords="470,561,515,583,524,627,498,641,468,647,439,636,429,598,438,576" />
+    href='javascript:swal({
+  		title: "Welcome!",
+  		text: "When I was a kid, I loved to play adventure games.\n Day of the Tentacle, Monkey Island, Indiana Jones and more. I loved that they were  are all about unraveling stories, exploring worlds and solving puzzles. Even as an adult, I choose to live my life as an adventure game.\n Every clickable item in this room is part of my journey: something I\x27ve made, or a piece in the puzzle, that helped lead  me to my next adventure. Enjoy playing!\n"});' 
+  	shape="poly" coords="470,561,515,583,524,627,498,641,468,647,439,636,429,598,438,576" />
 </map>
 
 <audio autoplay>
   <source src="creaky_door_3.mp3" type="audio/mpeg">
 </audio>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script  src= "jquery.rwdImageMaps.js"></script>
+<script>
+$(document).ready(function(e) {
+	$('img[usemap]').rwdImageMaps();
+});
+</script>
+
 
 </body>
 
