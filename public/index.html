@@ -28,12 +28,25 @@
   <source src="creaky_door_3.mp3" type="audio/mpeg">
 </audio>
 
+
+<script src="https://www.gstatic.com/firebasejs/3.5.3/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD3LCVzcHnFd5JNJGpRYGNr-6zLi4tKf0w",
+    authDomain: "karins-quest.firebaseapp.com",
+    databaseURL: "https://karins-quest.firebaseio.com",
+    storageBucket: "",
+    messagingSenderId: "1027615989897"
+  };
+  firebase.initializeApp(config);
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script  src= "jquery.rwdImageMaps.js"></script>
 <script>
 $(document).ready(function(e) {
 	$('img[usemap]').rwdImageMaps();
-
 	swal({
   		title: "Welcome!",
   		text: "When I was a kid, I loved to play adventure games.\n Day of the Tentacle, Monkey Island, Indiana Jones and more. I loved that they were  are all about unraveling stories, exploring worlds and solving puzzles. Even as an adult, I choose to live my life as an adventure game.\n Every clickable item in this room is part of my journey: something I\x27ve made, or a piece in the puzzle, that helped lead  me to my next adventure. Enjoy playing!\n"
