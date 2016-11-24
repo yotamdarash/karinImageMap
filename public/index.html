@@ -50,8 +50,15 @@ function questInfo(){
     });
 };
 $(document).ready(function(e) {
+
   $('img[usemap]').rwdImageMaps();
-  questInfo()
+  
+  questInfo();
+  
+  $('area').click(function(){
+    $('audio').prop('muted', true)
+  });
+
 });
 </script>
 
