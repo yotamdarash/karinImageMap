@@ -21,7 +21,13 @@
     href='javascript:questInfo()' 
   	shape="poly" coords="470,561,515,583,524,627,498,641,468,647,439,636,429,598,438,576" />
 </map>
-
+<div id="highlights-container">
+    <img src="picture.png" data-top="12" data-left="0">
+    <img src="tv.png" data-top="27.5" data-left="15">
+    <img src="boat.png" data-top="8" data-left="1">
+    <img src="globe.png" data-top="9.5" data-left="-5">
+    <img src="babushka.png" data-top="19" data-left="1">
+</div>
 <audio autoplay>
   <source src="AUD-20161117-WA0003.m4a" type="audio/mpeg">
 </audio>
@@ -43,22 +49,82 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script  src= "jquery.rwdImageMaps.js"></script>
 <script>
+var IMG_WIDTH = 285.0;
+var IMG_HEIGHT = 314.0;
 function questInfo(){
   swal({
       title: "Welcome!",
       text: "When I was a kid, I loved to play adventure games.\n Day of the Tentacle, Monkey Island, Indiana Jones and more. I loved that they were  are all about unraveling stories, exploring worlds and solving puzzles. Even as an adult, I choose to live my life as an adventure game.\n Every clickable item in this room is part of my journey: something I\x27ve made, or a piece in the puzzle, that helped lead  me to my next adventure. Enjoy playing!\n"
     });
-};
-$(document).ready(function(e) {
+}
+function parseCoords(coordsStr) {
+    var res = [];
+    var coordStrs = coordsStr.split(",");
+    for (var i = 0 ; i < coordStrs.length ; ++i) {
+        if (i % 2 > 0) continue;
 
-  $('img[usemap]').rwdImageMaps();
-  
-  questInfo();
-  
-  $('area').click(function(){
-    $('audio').prop('muted', true)
-  });
+        res.push([parseFloat(coordStrs[i]), parseFloat(coordStrs[(i + 1)])]);
+    }
+    return res;
+}
+function findMin(coords, index) {
+    var min = Number.MAX_SAFE_INTEGER;
+    for (var i = 0 ; i < coords.length ; ++i) {
+        if (coords[i][index] < min) {
+            min = coords[i][index];
+        }
+    }
+    return min;
+}
+function findMax(coords, index) {
+    var max = Number.MIN_SAFE_INTEGER;
+    for (var i = 0 ; i < coords.length ; ++i) {
+        if (coords[i][index] > max) {
+            max = coords[i][index];
+        }
+    }
+    return max;
+}
+function leftFromCenter(center, ratio) {
+    return center - (IMG_WIDTH*ratio)/2.0;
+}
+function topFromCenter(center, ratio) {
+    return center - (IMG_HEIGHT*ratio)/2.0;
+}
+function placeHighlightImages() {
+    var mapPosition = $(".MainImgMap")[0].getBoundingClientRect();
+    var ratio = mapPosition.width / 1024.0;
+    var $highlightImages = $("#highlights-container img");
+    $("#Map .ucarea").each(function(i, el) {
+        var coords = parseCoords($(el).attr('coords'));
+        var left = findMin(coords, 0) + mapPosition.left;
+        var right = findMax(coords, 0) + mapPosition.left;
+        var top = findMin(coords, 1) + mapPosition.top;
+        var bottom = findMax(coords, 1) + mapPosition.top;
+        var $img = $($highlightImages[i]);
+        $img.attr("style",
+                "left:" + (leftFromCenter((left+right)/2.0, ratio) + parseFloat($img.data("left") * ratio))
+                + "px;top:" + (topFromCenter((top+bottom)/2.0 , ratio) + parseFloat($img.data("top") * ratio))
+                + "px;width:" + IMG_WIDTH * ratio
+                + "px;height:" + IMG_HEIGHT * ratio
+                + "px;");
 
+        $(this).hover(function(){
+            $img.show();
+        }, function(){
+            $img.hide();
+        });
+    });
+}
+$(document).ready(function (e) {
+    $("body").on("rwdImageMap-updated", placeHighlightImages);
+    $('img[usemap]').rwdImageMaps();
+
+    questInfo();
+
+    $('area').click(function(){
+        $('audio').prop('muted', true)
+    });
 });
 </script>
 

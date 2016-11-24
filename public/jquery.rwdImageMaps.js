@@ -57,6 +57,7 @@
 						}
 						$this.attr(c, coordsPercent.toString());
 					});
+					$("body").trigger("rwdImageMap-updated");
 				}).attr('src', $that.attr('src'));
 			});
 		};
