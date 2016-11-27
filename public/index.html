@@ -20,6 +20,8 @@
     <area alt="" title="info", id="info", 
     href='javascript:questInfo()' 
   	shape="poly" coords="470,561,515,583,524,627,498,641,468,647,439,636,429,598,438,576" />
+    <area alt="" title="" href="javascript:toggleSound()" shape="poly" coords="38,619,73,617,95,639,95,668,80,688,56,690,28,673,18,642" />
+
 </map>
 <div id="highlights-container">
     <img src="picture.png" data-top="12" data-left="0">
@@ -49,6 +51,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script  src= "jquery.rwdImageMaps.js"></script>
 <script>
+function toggleSound(){
+  var currentAudioState = $('audio').prop('paused');
+  if (currentAudioState) {
+    $('audio').get(0).play();
+  } 
+  else {
+    $('audio').get(0).pause();
+  }
+}
 var IMG_WIDTH = 285.0;
 var IMG_HEIGHT = 314.0;
 function questInfo(){
@@ -122,8 +133,8 @@ $(document).ready(function (e) {
 
     questInfo();
 
-    $('area').click(function(){
-        $('audio').prop('muted', true)
+    $('.ucarea').click(function(){
+        $('audio').get(0).pause();
     });
 });
 </script>
